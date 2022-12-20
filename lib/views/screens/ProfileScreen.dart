@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
+import 'package:tiktok_clone/controllers/auth_controller.dart';
 
 import '../../constants.dart';
 import '../../controllers/ProfileController.dart';
@@ -18,6 +19,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  final AuthController _authController = Get.put(AuthController());
   final ProfileController profileController = Get.put(ProfileController());
 
   @override
@@ -76,6 +78,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     Icons.error,
                                   ),
                                 ),
+                              ),
+                              IconButton(
+                                onPressed: () => () {},
+                                icon: const Icon(Icons.edit),
                               )
                             ],
                           ),

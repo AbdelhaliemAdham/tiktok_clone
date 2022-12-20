@@ -45,13 +45,16 @@ class SignupScreen extends StatelessWidget {
                       'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png'),
                   backgroundColor: Colors.black,
                 ),
-                Positioned(
-                  bottom: -10,
-                  left: 80,
-                  child: IconButton(
-                    onPressed: () => authController.pickImage(),
-                    icon: const Icon(
-                      Icons.add_a_photo,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Positioned(
+                    bottom: -10,
+                    left: 80,
+                    child: IconButton(
+                      onPressed: () => authController.pickImage(),
+                      icon: const Icon(
+                        Icons.add_a_photo,
+                      ),
                     ),
                   ),
                 ),

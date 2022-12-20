@@ -1,12 +1,14 @@
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tiktok_clone/views/screens/WelcomeScreen.dart';
 import 'package:tiktok_clone/views/screens/home_screan.dart';
 import 'package:tiktok_clone/constants.dart';
-import 'package:tiktok_clone/models/user.dart' as model;
+import 'package:tiktok_clone/models/user.dart';
 import 'package:tiktok_clone/views/screens/auth/login_screen.dart';
 import 'package:tiktok_clone/views/screens/video_screen.dart';
 
@@ -30,9 +32,13 @@ class AuthController extends GetxController {
     if (user == null) {
       Get.offAll(() => LoginScreen());
     } else {
-      Get.offAll(() => const HomeScreen());
+      Get.offAll(() {
+        const WelcomePage();
+      });
     }
   }
+
+ 
 
   void pickImage() async {
     final pickedImage =
@@ -71,7 +77,7 @@ class AuthController extends GetxController {
           password: password,
         );
         String downloadUrl = await _uploadToStorage(image);
-        model.User user = model.User(
+        UserModel user = UserModel(
           name: username,
           email: email,
           uid: cred.user!.uid,
@@ -134,7 +140,6 @@ class AuthController extends GetxController {
         shouldIconPulse: true,
         barBlur: 20,
       );
-      
     }
   }
 

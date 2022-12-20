@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:tiktok_clone/constants.dart';
-import 'package:tiktok_clone/models/video_model.dart';
 
 class ProfileController extends GetxController {
   final Rx<Map<String, dynamic>> _user = Rx<Map<String, dynamic>>({});

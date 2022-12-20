@@ -4,8 +4,8 @@ import 'package:tiktok_clone/constants.dart';
 import '../models/user.dart';
 
 class SearchController extends GetxController {
-  late Rx<List<User>> _searchedUser = Rx<List<User>>([]);
- List<User> get searchedUser => _searchedUser.value;
+  late Rx<List<UserModel>> _searchedUser = Rx<List<UserModel>>([]);
+ List<UserModel> get searchedUser => _searchedUser.value;
 
   searchUser(String user) {
     _searchedUser.bindStream(firestore
@@ -13,9 +13,9 @@ class SearchController extends GetxController {
         .where('name', isGreaterThanOrEqualTo: user)
         .snapshots()
         .map((query) {
-      List<User> list = [];
+      List<UserModel> list = [];
       for (var element in query.docs) {
-        list.add(User.fromSnap(element));
+        list.add(UserModel.fromSnap(element));
       }
       return list;
     }));

@@ -13,6 +13,7 @@ class CommentScreen extends StatelessWidget {
   }) : super(key: key);
 
   final TextEditingController _commentController = TextEditingController();
+
   CommentController commentController = Get.put(CommentController());
 
   @override
@@ -125,8 +126,10 @@ class CommentScreen extends StatelessWidget {
                   ),
                 ),
                 trailing: TextButton(
-                  onPressed: () =>
-                      commentController.postComment(_commentController.text),
+                  onPressed: () {
+                    commentController.postComment(_commentController.text);
+                    _commentController.clear();
+                  },
                   child: const Text(
                     'Send',
                     style: TextStyle(

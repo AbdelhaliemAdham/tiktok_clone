@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:video_player/video_player.dart';
@@ -33,10 +34,18 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Container(
-      height: size.height,
-      width: size.width,
-      child: VideoPlayer(controller),
+    return InkWell(
+      onDoubleTap: (() {
+        controller.pause();
+      }),
+      onTap: (() {
+        controller.play();
+      }),
+      child: Container(
+        height: size.height,
+        width: size.width,
+        child: VideoPlayer(controller),
+      ),
     );
   }
 }
